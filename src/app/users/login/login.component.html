@@ -1,0 +1,50 @@
+<html>
+  <body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <h2>User Login</h2>
+            </div>
+
+            <!-- Login Form -->
+            <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+        
+                <!--username-->
+                <div class="form-group">
+                    <div class="input-group-icon right">
+                        <div class="input-icon" [ngClass]="{'has-error':loginform.get('username').errors &&
+                            (loginform.get('username').touched || loginform.get('username').dirty)
+                            }">
+                        </div>
+                        <input class="form-control" formControlName="username"  type="text" name="username" placeholder="Username" autocomplete="off">
+                    </div>
+                    <span class="help-block" *ngIf="loginform.get('username').errors &&
+                        (loginform.get('username').touched || loginform.get('username').dirty)">
+                        <span *ngIf="loginform.get('username').errors.required" class="text-danger">Username is required</span>
+                    </span>
+                </div>
+            
+                <!--password-->
+                <div class="form-group">
+                    <div class="input-group-icon right" [ngClass]="{'has-error':loginform.get('password').errors &&
+                        (loginform.get('password').touched || loginform.get('password').dirty)}">
+                        <div class="input-icon"><i class="fa fa-lock font-16"></i></div>
+                            <input class="form-control" formControlName="password" type="password" name="password" placeholder="Password">
+                    </div>
+                    <span class="help-block" *ngIf="loginform.get('password').errors &&
+                        (loginform.get('password').touched || loginform.get('password').dirty)">
+                        <span *ngIf="loginform.get('password').errors.required" class="text-danger">Password is required</span>
+                    </span>
+                </div>
+       
+                <!--login button-->
+                <div class="form-group">
+                    <button  [disabled]="!loginform.valid" class="btn btn-info btn-block" type="submit">Login</button>
+                </div>
+                <button class="btn btn-link" (click)="getregister()">Register</button>
+            </form>
+        </div>
+    </div>
+ </body>
+</html>

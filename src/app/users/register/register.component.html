@@ -1,0 +1,88 @@
+<html>
+  <body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- title -->
+            <div class="fadeIn first">
+                <h2>User Register</h2>
+            </div>
+
+            <!-- register Form -->
+            <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
+        
+                <!--name-->
+                <div class="form-group">
+                    <div class="input-group-icon right">
+                        <div class="input-icon" [ngClass]="{'has-error':registerform.get('name').errors &&
+                            (registerform.get('name').touched || registerform.get('name').dirty)
+                            }">
+                        </div>
+                        <input class="form-control" formControlName="name"  type="text" name="name" placeholder="Name">
+                    </div>
+                    <span class="help-block" *ngIf="registerform.get('name').errors &&
+                        (registerform.get('name').touched || registerform.get('name').dirty)">
+                        <span *ngIf="registerform.get('name').errors.required" class="text-danger">Name Id is required</span>
+                        <span *ngIf="registerform.get('name').errors.minlength || 
+                        registerform.get('name').errors.pattern" class="text-danger">Please enter valid entry</span>
+                    </span>
+                    
+                </div>
+
+                <!--phone no-->
+                <div class="form-group">
+                    <div class="input-group-icon right">
+                        <div class="input-icon" [ngClass]="{'has-error':registerform.get('phone_no').errors &&
+                            (registerform.get('phone_no').touched || registerform.get('phone_no').dirty)
+                            }">
+                        </div>
+                        <input class="form-control" formControlName="phone_no"  type="text" name="phone_no" placeholder="Contact Number">
+                    </div>
+                    <span class="help-block" *ngIf="registerform.get('phone_no').errors &&
+                        (registerform.get('phone_no').touched || registerform.get('phone_no').dirty)">
+                        <span *ngIf="registerform.get('phone_no').errors.required" class="text-danger">Contact Number is required</span>
+                    </span>
+                    <span class="help-block" *ngIf="registerform.get('phone_no').errors &&
+                        (registerform.get('phone_no').touched || registerform.get('phone_no').dirty)">
+                        <span *ngIf="registerform.get('phone_no').errors.minlength || 
+                        registerform.get('phone_no').errors.pattern" class="text-danger">Contact No. should be valid & 10 digit</span>
+                    </span>
+                </div>
+
+                <!--username-->
+                <div class="form-group">
+                    <div class="input-group-icon right">
+                        <div class="input-icon" [ngClass]="{'has-error':registerform.get('username').errors &&
+                            (registerform.get('username').touched || registerform.get('username').dirty)
+                            }">
+                        </div>
+                        <input class="form-control" formControlName="username"  type="text" name="username" placeholder="Username" autocomplete="off">
+                    </div>
+                    <span class="help-block" *ngIf="registerform.get('username').errors &&
+                        (registerform.get('username').touched || registerform.get('username').dirty)">
+                        <span *ngIf="registerform.get('username').errors.required" class="text-danger">Username Id is required</span>
+                    </span>
+                </div>
+
+                <!--password-->
+                <div class="form-group">
+                    <div class="input-group-icon right" [ngClass]="{'has-error':registerform.get('password').errors &&
+                        (registerform.get('password').touched || registerform.get('password').dirty)}">
+                        <div class="input-icon"><i class="fa fa-lock font-16"></i></div>
+                            <input class="form-control" formControlName="password" type="password" name="password" placeholder="Password">
+                    </div>
+                    <span class="help-block" *ngIf="registerform.get('password').errors &&
+                        (registerform.get('password').touched || registerform.get('password').dirty)">
+                        <span *ngIf="registerform.get('password').errors.required" class="text-danger">Password is required</span>
+                    </span>
+                </div>
+       
+                <!--register button-->
+                <div class="form-group">
+                    <button  [disabled]="!registerform.valid" class="btn btn-info btn-block" type="submit">Register</button>
+                </div>
+                <button class="btn btn-link" (click)="getlogin()">Login</button>
+            </form>
+        </div>
+    </div>
+ </body>
+</html>
